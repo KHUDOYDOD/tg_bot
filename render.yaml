@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: forex-analysis-bot
+    env: python
+    buildCommand: pip install -e .
+    startCommand: python bot.py
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: PORT
+        value: 5000
+    healthCheckPath: /health
+    autoDeploy: true
